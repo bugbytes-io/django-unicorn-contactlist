@@ -1,0 +1,5 @@
+Django==4.1.6
+django-allauth==0.52.0
+django-extensions==3.2.1
+django-unicorn==0.50.0
+Faker==18.3.1

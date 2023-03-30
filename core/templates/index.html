@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+
+{% block extra_head %}
+    
+{% endblock %}
+
+<!-- Content -->
+{% block content %}
+
+<div class="m-8 p-8">
+
+    <h1 class="mb-4 text-2xl leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white">
+        Contact Page    
+    </h1>
+
+    {% if user.is_authenticated %}
+        <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            href="{% url 'account_logout' %}">
+                Logout
+        </a>
+    {% else %}
+        <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            href="{% url 'account_login' %}">
+                Login
+        </a>
+    {% endif %}
+
+    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+    
+    
+
+</div>
+{% endblock %}
