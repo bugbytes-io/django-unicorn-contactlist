@@ -1,0 +1,39 @@
+<div>
+    <div class="grid grid-cols-2">
+        <!-- LHS: a form to add contacts -->
+        <div>
+            <h1 class="mb-4 text-xl leading-none tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                Add a Contact    
+            </h1>
+            <form unicorn:submit.prevent="add_contact">
+                <select unicorn:model="contact_pk" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value=""></option>
+                    {% for user in users %}
+                        <option value="{{ user.id }}">{{ user.username }}</option>
+                    {% endfor %}
+                </select>
+
+                <button class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">
+                    Add User
+                </button>
+            </form>
+        </div>
+
+        <!-- RHS: a list of existing contacts -->
+        <div class="flex flex-col items-center">
+            <h1 class="mb-4 text-xl leading-none tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                Contact List    
+            </h1>
+            <ul class="list-disc">
+            {% for contact in contacts %}
+                <div class="flex items-center">
+                    <li>{{ contact.username }}</li>
+                    <svg unicorn:click="delete_contact( {{ contact.pk }} )" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ml-2 text-red-500">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

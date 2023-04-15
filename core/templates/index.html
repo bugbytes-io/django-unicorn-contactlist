@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
-
+{% load unicorn %}
 
 {% block extra_head %}
+
+{% unicorn_scripts %}
     
 {% endblock %}
 
@@ -9,6 +11,7 @@
 {% block content %}
 
 <div class="m-8 p-8">
+    {% csrf_token %}
 
     <h1 class="mb-4 text-2xl leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white">
         Contact Page    
@@ -27,8 +30,10 @@
     {% endif %}
 
     <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
-    
-    
+
+    {% if user.is_authenticated %}
+        {% unicorn 'contact-page' %}
+    {% endif %}
 
 </div>
 {% endblock %}
